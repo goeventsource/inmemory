@@ -9,6 +9,7 @@ import (
 	"github.com/google/uuid"
 
 	"github.com/goeventsource/goeventsource"
+
 	. "github.com/goeventsource/inmemory/inmemorytest"
 )
 

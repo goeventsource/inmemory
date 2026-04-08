@@ -2,6 +2,7 @@ package inmemorytest
 
 import (
 	"github.com/goeventsource/goeventsource"
+
 	"github.com/goeventsource/inmemory"
 )
 
@@ -11,7 +12,9 @@ type SnapshotterConfig[K goeventsource.ID, V goeventsource.Root[K]] struct {
 }
 
 // NewSnapshotterConfig creates a new SnapshotterConfig with default values for testing purposes.
-func NewSnapshotterConfig[K goeventsource.ID, V goeventsource.Root[K]](strategy goeventsource.SnapshotterWriteStrategy[K, V]) SnapshotterConfig[K, V] {
+func NewSnapshotterConfig[K goeventsource.ID, V goeventsource.Root[K]](
+	strategy goeventsource.SnapshotterWriteStrategy[K, V],
+) SnapshotterConfig[K, V] {
 	return SnapshotterConfig[K, V]{
 		SnapshotterWriteStrategy: strategy,
 	}

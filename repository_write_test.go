@@ -9,6 +9,7 @@ import (
 
 	"github.com/goeventsource/goeventsource"
 	"github.com/goeventsource/goeventsource/goeventsourcetest/goeventsourcetestintegration"
+
 	"github.com/goeventsource/inmemory"
 )
 

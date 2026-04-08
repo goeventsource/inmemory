@@ -6,8 +6,9 @@ import (
 	"github.com/google/uuid"
 
 	"github.com/goeventsource/goeventsource"
-	"github.com/goeventsource/inmemory/inmemorytest"
 	"github.com/goeventsource/goeventsource/goeventsourcetest/goeventsourcetestintegration"
+
+	"github.com/goeventsource/inmemory/inmemorytest"
 )
 
 func TestSnapshotter(t *testing.T) {

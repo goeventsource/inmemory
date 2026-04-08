@@ -2,6 +2,7 @@ package inmemorytest
 
 import (
 	"github.com/goeventsource/goeventsource"
+
 	"github.com/goeventsource/inmemory"
 )
 

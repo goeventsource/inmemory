@@ -2,6 +2,7 @@ package inmemorytest
 
 import (
 	"github.com/goeventsource/goeventsource"
+
 	"github.com/goeventsource/inmemory"
 )
 
@@ -25,7 +26,9 @@ func NewRepositoryConfig[K goeventsource.ID, V goeventsource.Root[K]](
 }
 
 // NewRepository creates a new instance of an inmemory.Repository based on the provided StoreConfig.
-func NewRepository[K goeventsource.ID, V goeventsource.Root[K]](cfg RepositoryConfig[K, V]) (*inmemory.Repository[K, V], *inmemory.Store[K]) {
+func NewRepository[K goeventsource.ID, V goeventsource.Root[K]](
+	cfg RepositoryConfig[K, V],
+) (*inmemory.Repository[K, V], *inmemory.Store[K]) {
 	s := inmemory.NewStore[K](cfg.StoreAppendOpts...)
 	return inmemory.NewRepository(s, cfg.FactoryFunc, cfg.Opts...), s
 }

@@ -6,9 +6,10 @@ import (
 	"github.com/google/uuid"
 
 	"github.com/goeventsource/goeventsource"
+	"github.com/goeventsource/goeventsource/goeventsourcetest/goeventsourcetestintegration"
+
 	"github.com/goeventsource/inmemory"
 	"github.com/goeventsource/inmemory/inmemorytest"
-	"github.com/goeventsource/goeventsource/goeventsourcetest/goeventsourcetestintegration"
 )
 
 func TestRepository(t *testing.T) {
@@ -37,7 +38,6 @@ func TestRepository(t *testing.T) {
 	})
 
 	t.Run("repository_with_projector", func(t *testing.T) {
-
 		t.Run("repository_with_projector", func(t *testing.T) {
 			proj := &goeventsourcetestintegration.Projector{}
 			cfg := inmemorytest.NewRepositoryConfig(
