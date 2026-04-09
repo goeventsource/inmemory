@@ -9,6 +9,9 @@ import (
 )
 
 // Snapshotter holds aggregate snapshots in a process-local map guarded by a mutex.
+// It stores the root value directly (often a pointer): mutating that aggregate after WriteSnapshot corrupts the snapshot.
+// ReadSnapshot returns the same instance each time—no isolation like persistent snapshotters that serialize/deserialize.
+// This is intentional for an in-memory implementation intended for testing and development, not production.
 type Snapshotter[K goeventsource.ID, V goeventsource.Root[K]] struct {
 	snapshots     map[string]V
 	WriteStrategy goeventsource.SnapshotterWriteStrategy[K, V]

@@ -103,7 +103,7 @@ func (s *Store[K]) Stream(ctx context.Context, id K, f goeventsource.StoreStream
 		}
 		cp := ev
 		if ev.Metadata != nil {
-			cp.Metadata = cloneMetadata(ev.Metadata)
+			cp.Metadata = goeventsource.CloneMetadata(ev.Metadata)
 		}
 		out = append(out, cp)
 	}
@@ -111,15 +111,4 @@ func (s *Store[K]) Stream(ctx context.Context, id K, f goeventsource.StoreStream
 		return nil, goeventsource.ErrStoreStreamEmpty
 	}
 	return out, nil
-}
-
-func cloneMetadata(md goeventsource.Metadata) goeventsource.Metadata {
-	if md == nil {
-		return nil
-	}
-	c := make(goeventsource.Metadata, len(md))
-	for k, v := range md {
-		c[k] = v
-	}
-	return c
 }

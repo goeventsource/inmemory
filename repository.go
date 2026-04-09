@@ -120,7 +120,6 @@ func (r Repository[K, V]) Write(ctx context.Context, root V) error {
 	if err := r.store.Append(ctx, evs...); err != nil {
 		return fmt.Errorf("%w: %w", goeventsource.ErrRepositoryWrite, err)
 	}
-	goeventsource.FlushEvents(root)
 
 	for i := range r.projectors {
 		if err := r.projectors[i].Project(ctx, evs...); err != nil {
@@ -134,5 +133,6 @@ func (r Repository[K, V]) Write(ctx context.Context, root V) error {
 		}
 	}
 
+	goeventsource.FlushEvents(root)
 	return nil
 }
