@@ -1,6 +1,6 @@
 # inmemory
 
-**In-process implementation** of [goeventsource](https://github.com/goeventsource/goeventsource) storage interfaces: maps, mutexes, and no I/O. Use it for fast unit tests, spikes, and CI without standing up a database. It implements the same core contracts as other backends but does **not** mimic database transactions or connection pools—those belong in the [pgx](../pgx/README.md) module.
+**In-process implementation** of [goeventsource](https://github.com/goeventsource/goeventsource) storage interfaces: maps, mutexes, and no I/O. Use it for fast unit tests, spikes, and CI without standing up a database. It implements the same core contracts as other backends but does **not** mimic database transactions or connection pools—those belong in the [`pgx`](https://github.com/goeventsource/pgx) module.
 
 ## Install
 
@@ -12,7 +12,7 @@ Requires `github.com/goeventsource/goeventsource` as a direct dependency.
 
 ## Why this module exists
 
-The core library defines **what** event storage must do (`Append`, `Stream`, repository `Read` / `Write`, …). **inmemory** is one **how** for that contract: thread-safe in-process structures only. For durable PostgreSQL-backed storage, use [github.com/goeventsource/pgx](../pgx/README.md) instead.
+The core library defines **what** event storage must do (`Append`, `Stream`, repository `Read` / `Write`, …). **inmemory** is one **how** for that contract: thread-safe in-process structures only. For durable PostgreSQL-backed storage, use [`github.com/goeventsource/pgx`](https://github.com/goeventsource/pgx) instead.
 
 ## Packages
 
@@ -97,14 +97,10 @@ If you implement a custom store, run the shared scenarios from:
 
 `github.com/goeventsource/goeventsource/goeventsourcetest/goeventsourcetestintegration`
 
-The **inmemory** module’s own tests demonstrate that pattern.
+The **inmemory** module's own tests demonstrate that pattern.
 
 ## Tests
 
 ```bash
 go test ./...
 ```
-
-## Unpublished `goeventsource`
-
-Until the core module is on the proxy, add a `replace` in `go.mod` or work inside [new_org/](../README.md) with `go.work`. Satellite CI often uses `go mod edit -replace=github.com/goeventsource/goeventsource@v0.0.0=<path>`.
